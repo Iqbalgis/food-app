@@ -1,13 +1,13 @@
 part of 'pages.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class AddressPage extends StatefulWidget {
+  const AddressPage({Key? key}) : super(key: key);
 
   @override
-  _SignUpPageState createState() => _SignUpPageState();
+  _AddressPageState createState() => _AddressPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _AddressPageState extends State<AddressPage> {
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();

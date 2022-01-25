@@ -95,7 +95,7 @@ class _SignInPageState extends State<SignInPage> {
                         'Button',
                         style: GoogleFonts.poppins(
                             fontSize: 16,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontWeight: FontWeight.w500),
                       ),
                       style: ElevatedButton.styleFrom(
