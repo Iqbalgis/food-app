@@ -10,9 +10,9 @@ class AddressPage extends StatefulWidget {
 class _AddressPageState extends State<AddressPage> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    TextEditingController nameController = TextEditingController();
+    TextEditingController phoneController = TextEditingController();
+    TextEditingController addressController = TextEditingController();
+    TextEditingController houseNumController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -32,25 +32,10 @@ class _AddressPageState extends State<AddressPage> {
           mainAxisSize: MainAxisSize.max,
           children: [
             Container(
-              child: Text(
-                "Welcome",
-                style: GoogleFonts.poppins(
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 26),
-              width: 110,
-              height: 110,
-              color: Colors.blue,
-            ),
-            Container(
               width: double.infinity,
               margin: EdgeInsets.fromLTRB(defaultMargin, 26, defaultMargin, 6),
               child: Text(
-                "Full Name",
+                "Phone number",
                 style: blackFontStyle2,
               ),
             ),
@@ -58,10 +43,10 @@ class _AddressPageState extends State<AddressPage> {
               width: double.infinity,
               margin: EdgeInsets.symmetric(horizontal: defaultMargin),
               child: TextField(
-                controller: nameController,
+                controller: phoneController,
                 decoration: InputDecoration(
                   hintStyle: greyFontStyle,
-                  hintText: "Type your full name",
+                  hintText: "Type your phone number",
                 ),
               ),
             ),
@@ -69,7 +54,7 @@ class _AddressPageState extends State<AddressPage> {
               width: double.infinity,
               margin: EdgeInsets.fromLTRB(defaultMargin, 26, defaultMargin, 6),
               child: Text(
-                "Email Address",
+                "Address",
                 style: blackFontStyle2,
               ),
             ),
@@ -77,10 +62,10 @@ class _AddressPageState extends State<AddressPage> {
               width: double.infinity,
               margin: EdgeInsets.symmetric(horizontal: defaultMargin),
               child: TextField(
-                controller: emailController,
+                controller: addressController,
                 decoration: InputDecoration(
                   hintStyle: greyFontStyle,
-                  hintText: "Type your email address",
+                  hintText: "Type your address",
                 ),
               ),
             ),
@@ -88,7 +73,7 @@ class _AddressPageState extends State<AddressPage> {
               width: double.infinity,
               margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
               child: Text(
-                "Password",
+                "House No.",
                 style: blackFontStyle2,
               ),
             ),
@@ -96,13 +81,46 @@ class _AddressPageState extends State<AddressPage> {
               width: double.infinity,
               margin: EdgeInsets.symmetric(horizontal: defaultMargin),
               child: TextField(
-                controller: passwordController,
+                controller: houseNumController,
                 decoration: InputDecoration(
                   hintStyle: greyFontStyle,
-                  hintText: "Type your password",
+                  hintText: "Type your house no",
                 ),
               ),
             ),
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
+              child: Text(
+                "City",
+                style: blackFontStyle2,
+              ),
+            ),
+            Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                child: DropdownButton(
+                  isExpanded: true,
+                  underline: SizedBox(),
+                  items: [
+                    DropdownMenuItem(
+                        child: Text(
+                      'Pekalongan',
+                      style: blackFontStyle3,
+                    )),
+                    DropdownMenuItem(
+                        child: Text(
+                      'Batang',
+                      style: blackFontStyle3,
+                    )),
+                    DropdownMenuItem(
+                        child: Text(
+                      'Pemalang',
+                      style: blackFontStyle3,
+                    ))
+                  ],
+                  onChanged: null,
+                )),
             Container(
               width: double.infinity,
               height: 45,
@@ -112,7 +130,7 @@ class _AddressPageState extends State<AddressPage> {
               child: ElevatedButton(
                 onPressed: () {},
                 child: Text(
-                  'Lanjutkan',
+                  'Daftar Sekarang',
                   style: GoogleFonts.poppins(
                       fontSize: 16,
                       color: Colors.black,
