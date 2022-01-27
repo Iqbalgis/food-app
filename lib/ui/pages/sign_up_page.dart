@@ -110,7 +110,9 @@ class _SignUpPageState extends State<SignUpPage> {
                   EdgeInsets.only(top: defaultMargin, bottom: defaultMargin),
               padding: EdgeInsets.symmetric(horizontal: defaultMargin),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(AddressPage());
+                },
                 child: Text(
                   'Lanjutkan',
                   style: GoogleFonts.poppins(

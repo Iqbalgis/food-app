@@ -97,30 +97,46 @@ class _AddressPageState extends State<AddressPage> {
               ),
             ),
             Container(
-                width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-                child: DropdownButton(
-                  isExpanded: true,
-                  underline: SizedBox(),
-                  items: [
-                    DropdownMenuItem(
-                        child: Text(
-                      'Pekalongan',
-                      style: blackFontStyle3,
-                    )),
-                    DropdownMenuItem(
-                        child: Text(
-                      'Batang',
-                      style: blackFontStyle3,
-                    )),
-                    DropdownMenuItem(
-                        child: Text(
-                      'Pemalang',
-                      style: blackFontStyle3,
-                    ))
-                  ],
-                  onChanged: null,
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+              child: DropdownButton(items: [
+                DropdownMenuItem(
+                    child: Text(
+                  'Pekalongan',
+                  style: greyFontStyle,
                 )),
+                // DropdownMenuItem(
+                //     child: Text(
+                //   'Pemalang',
+                //   style: greyFontStyle,
+                // )),
+              ], onChanged: null),
+            ),
+            // Container(
+            //     width: double.infinity,
+            //     margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+            //     child: DropdownButton(
+            //       isExpanded: true,
+            //       underline: SizedBox(),
+            //       items: [
+            //         DropdownMenuItem(
+            //             child: Text(
+            //           'Pekalongan',
+            //           style: blackFontStyle3,
+            //         )),
+            //         DropdownMenuItem(
+            //             child: Text(
+            //           'Batang',
+            //           style: blackFontStyle3,
+            //         )),
+            //         DropdownMenuItem(
+            //             child: Text(
+            //           'Pemalang',
+            //           style: blackFontStyle3,
+            //         ))
+            //       ],
+            //       onChanged: (null),
+            //     )),
             Container(
               width: double.infinity,
               height: 45,
