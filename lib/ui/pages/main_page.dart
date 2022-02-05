@@ -30,12 +30,12 @@ class _MainPageState extends State<MainPage> {
                 selectedPage = index;
               });
             },
-            children: [
+            children: const [
               Center(
                 child: FoodPage(),
               ),
               Center(
-                child: Text('Order'),
+                child: OrderHistoryPage(),
               ),
               Center(
                 child: Text('Profile'),

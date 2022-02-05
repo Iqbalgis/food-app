@@ -30,14 +30,12 @@ class _SignInPageState extends State<SignInPage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Container(
-              child: Text(
-                "Welcome Back!",
-                style: GoogleFonts.poppins(
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
+            Text(
+              "Welcome Back!",
+              style: GoogleFonts.poppins(
+                  fontSize: 24,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600),
             ),
             Container(
               width: double.infinity,

@@ -31,14 +31,21 @@ class _SignUpPageState extends State<SignUpPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Container(
-              child: Text(
-                "Welcome",
-                style: GoogleFonts.poppins(
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
+            // Container(
+            //   child: Text(
+            //     "Welcome",
+            //     style: GoogleFonts.poppins(
+            //         fontSize: 24,
+            //         color: Colors.black,
+            //         fontWeight: FontWeight.w600),
+            //   ),
+            // ),
+            Text(
+              "Welcome",
+              style: GoogleFonts.poppins(
+                  fontSize: 24,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600),
             ),
             Container(
               margin: EdgeInsets.only(top: 26),
