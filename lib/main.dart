@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProfilePage(),
+      home: MainPage(),
       // home: PaymentPage(
       //     transaction: Transaction(
       //   food: mockFoods[0],
