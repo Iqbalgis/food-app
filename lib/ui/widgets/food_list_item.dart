@@ -1,11 +1,10 @@
 part of 'widgets.dart';
 
 class FoodListItem extends StatelessWidget {
-  final Food food;
-  final double itemWidth;
+  final Food? food;
+  final double? itemWidth;
 
-  const FoodListItem({required this.food, required this.itemWidth, Key? key})
-      : super(key: key);
+  const FoodListItem({this.food, this.itemWidth, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +23,18 @@ class FoodListItem extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               image: DecorationImage(
-                  image: NetworkImage(food.picturePath), fit: BoxFit.cover),
+                  image: NetworkImage(food!.picturePath.toString()),
+                  fit: BoxFit.cover),
             ),
           ),
           SizedBox(
-            width: itemWidth - 194,
+            width: itemWidth! - 194,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  food.name,
+                  food!.name.toString(),
                   style: blackFontStyle2,
                   maxLines: 1,
                   overflow: TextOverflow.clip,
@@ -44,13 +44,13 @@ class FoodListItem extends StatelessWidget {
                     symbol: 'IDR ',
                     decimalDigits: 0,
                     locale: 'id-ID',
-                  ).format(food.price),
+                  ).format(food!.price),
                   style: greyFontStyle.copyWith(fontSize: 13),
                 ),
               ],
             ),
           ),
-          RatingStar(rate: food.rate),
+          RatingStar(rate: food!.rate),
         ],
       ),
     );

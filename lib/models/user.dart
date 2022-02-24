@@ -10,7 +10,7 @@ class User extends Equatable {
   final String city;
   final String picturePath;
 
-  User({
+  const User({
     required this.id,
     required this.name,
     required this.email,

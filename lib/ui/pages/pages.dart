@@ -1,14 +1,16 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:reels_food_app/cubit/cubit.dart';
 import 'package:reels_food_app/models/models.dart';
 import 'package:reels_food_app/shared/shared.dart';
 import 'package:reels_food_app/ui/widgets/widgets.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'sign_in_page.dart';
 part 'sign_up_page.dart';

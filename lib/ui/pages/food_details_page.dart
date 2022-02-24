@@ -1,11 +1,11 @@
 part of 'pages.dart';
 
 class FoodDetailsPage extends StatefulWidget {
-  final Function onBackButtonPressed;
+  final Function? onBackButtonPressed;
   final Transaction transaction;
 
   const FoodDetailsPage(
-      {required this.onBackButtonPressed, required this.transaction, Key? key})
+      {this.onBackButtonPressed, required this.transaction, Key? key})
       : super(key: key);
 
   @override
@@ -30,8 +30,8 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
                     image: DecorationImage(
-                        image:
-                            NetworkImage(widget.transaction.food.picturePath),
+                        image: NetworkImage(
+                            widget.transaction.food!.picturePath.toString()),
                         fit: BoxFit.cover)),
               ),
               Positioned(
@@ -45,7 +45,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                     child: GestureDetector(
                       onTap: () {
                         if (widget.onBackButtonPressed != null) {
-                          widget.onBackButtonPressed();
+                          widget.onBackButtonPressed!();
                         }
                       },
                       child: Container(
@@ -68,14 +68,14 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width - 134, // 32+102,
                     child: Text(
-                      widget.transaction.food.name,
+                      widget.transaction.food?.name ?? '',
                       style: whiteFontStyle1,
                     ),
                   )),
               Positioned(
                 bottom: defaultMargin,
                 left: defaultMargin * 2,
-                child: RatingStar(rate: widget.transaction.food.rate),
+                child: RatingStar(rate: widget.transaction.food!.rate),
               ),
               Positioned(
                 bottom: defaultMargin,
@@ -85,7 +85,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                     symbol: 'IDR ',
                     decimalDigits: 0,
                     locale: 'id-ID',
-                  ).format(widget.transaction.food.price),
+                  ).format(widget.transaction.food!.price),
                   style: whiteFontStyle2,
                 ),
               ),
@@ -131,14 +131,14 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                                 style: greyFontStyle.copyWith(fontSize: 13),
                               ),
                               Text(
-                                  NumberFormat.currency(
-                                    locale: 'id-ID',
-                                    symbol: 'IDR ',
-                                    decimalDigits: 0,
-                                  ).format(
-                                      quantity * widget.transaction.food.price),
-                                  style:
-                                      blackFontStyle2.copyWith(fontSize: 18)),
+                                NumberFormat.currency(
+                                  locale: 'id-ID',
+                                  symbol: 'IDR ',
+                                  decimalDigits: 0,
+                                ).format(quantity *
+                                    widget.transaction.food!.price!.toDouble()),
+                                style: blackFontStyle2.copyWith(fontSize: 18),
+                              ),
                             ],
                           ),
                           Row(
@@ -212,7 +212,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                           margin: EdgeInsets.fromLTRB(
                               defaultMargin, 10, defaultMargin, 0),
                           child: Text(
-                            widget.transaction.food.description,
+                            widget.transaction.food?.description ?? '',
                             style: greyFontStyle,
                           ),
                         ),
@@ -228,7 +228,7 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
                           margin: EdgeInsets.fromLTRB(
                               defaultMargin, 12, defaultMargin, 51),
                           child: Text(
-                            widget.transaction.food.ingredients,
+                            widget.transaction.food?.ingredients ?? '',
                             style: greyFontStyle,
                           ),
                         ),
@@ -247,7 +247,14 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
               margin: EdgeInsets.only(top: 16, bottom: 12),
               padding: EdgeInsets.symmetric(horizontal: defaultMargin * 2),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(PaymentPage(
+                    transaction: widget.transaction.copyWith(
+                        quantity: quantity,
+                        total:
+                            quantity * widget.transaction.food!.price!.toInt()),
+                  ));
+                },
                 child: Text(
                   'Order Now',
                   style: GoogleFonts.poppins(
@@ -267,3 +274,5 @@ class _FoodDetailsPageState extends State<FoodDetailsPage> {
     );
   }
 }
+
+class $ {}

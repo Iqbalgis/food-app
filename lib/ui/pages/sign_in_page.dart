@@ -8,12 +8,12 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    bool isLoading = false;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -81,16 +81,42 @@ class _SignInPageState extends State<SignInPage> {
               margin: EdgeInsets.only(top: 24, bottom: 12),
               padding: EdgeInsets.symmetric(horizontal: defaultMargin),
               child: isLoading
-                  ? SpinKitFadingCircle(
-                      size: 45,
-                      color: mainColor,
-                    )
+                  ? loadingIndicator
                   : ElevatedButton(
-                      onPressed: () {
-                        Get.to(SignUpPage());
+                      onPressed: () async {
+                        setState(() {
+                          isLoading = true;
+                        });
+
+                        await context.read<UserCubit>().signIn(
+                            emailController.text, passwordController.text);
+                        UserState state = context.read<UserCubit>().state;
+
+                        if (state is UserLoaded) {
+                          context.read<FoodCubit>().getFoods();
+                          Get.to(MainPage());
+                        } else {
+                          Get.snackbar("", "",
+                          backgroundColor: "D9435E".toColor(),
+                          icon: Icon(
+                            MdiIcons.closeCircleOutline,
+                            color: Colors.white,
+                          ),
+                          titleText: Text('Sign in failed',
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),),
+                          messageText: Text((state as UserLoadingFailed).message,
+                          style: GoogleFonts.poppins(color: Colors.white),)
+                          );
+                          setState(() {
+                            isLoading = false;
+                          });
+                        }
                       },
                       child: Text(
-                        'Button',
+                        'Sign In',
                         style: GoogleFonts.poppins(
                             fontSize: 16,
                             color: Colors.black,

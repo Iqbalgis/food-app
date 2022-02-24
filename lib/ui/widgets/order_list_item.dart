@@ -1,11 +1,10 @@
 part of 'widgets.dart';
 
 class OrderListItem extends StatelessWidget {
-  final Transaction transaction;
-  final double itemWidth;
+  final Transaction? transaction;
+  final double? itemWidth;
 
-  const OrderListItem(
-      {required this.transaction, required this.itemWidth, Key? key})
+  const OrderListItem({this.transaction, this.itemWidth, Key? key})
       : super(key: key);
 
   @override
@@ -19,30 +18,30 @@ class OrderListItem extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             image: DecorationImage(
-                image: NetworkImage(transaction.food.picturePath),
+                image: NetworkImage(transaction!.food!.picturePath.toString()),
                 fit: BoxFit.cover),
           ),
         ),
         SizedBox(
-          width: itemWidth -
+          width: itemWidth! -
               182, // 60 (lebar img) + 12 (jarak img ke text) + 110 (panjang rating)
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                transaction.food.name,
+                transaction!.food!.name.toString(),
                 style: blackFontStyle2,
                 maxLines: 1,
                 overflow: TextOverflow.clip,
               ),
               Text(
-                "${transaction.quantity} item's • " +
+                "${transaction!.quantity} item's • " +
                     NumberFormat.currency(
                       symbol: 'IDR ',
                       decimalDigits: 0,
                       locale: 'id-ID',
-                    ).format(transaction.total),
+                    ).format(transaction!.total),
                 style: greyFontStyle.copyWith(fontSize: 12),
               ),
             ],
@@ -54,22 +53,22 @@ class OrderListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                ConvertDateTime(transaction.dateTime),
+                ConvertDateTime(transaction!.dateTime!),
                 style: greyFontStyle.copyWith(fontSize: 12),
               ),
-              (transaction.status == TransactionStatus.cancelled)
+              (transaction!.status == TransactionStatus.cancelled)
                   ? Text(
                       'Cancelled',
                       style: GoogleFonts.poppins(
                           color: 'D9435E'.toColor(), fontSize: 10),
                     )
-                  : (transaction.status == TransactionStatus.pending)
+                  : (transaction!.status == TransactionStatus.pending)
                       ? Text(
                           'Pending',
                           style: GoogleFonts.poppins(
                               color: 'D9435E'.toColor(), fontSize: 10),
                         )
-                      : (transaction.status == TransactionStatus.on_delivery)
+                      : (transaction!.status == TransactionStatus.on_delivery)
                           ? Text(
                               'On Delivery',
                               style: GoogleFonts.poppins(

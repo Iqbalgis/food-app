@@ -1,15 +1,11 @@
 part of 'widgets.dart';
 
 class CustomTabBar extends StatelessWidget {
-  final int selectedIndex;
-  final List<String> titles;
-  final Function(int) onTap;
+  final int? selectedIndex;
+  final List<String>? titles;
+  final Function(int)? onTap;
 
-  const CustomTabBar(
-      {required this.selectedIndex,
-      required this.titles,
-      required this.onTap,
-      Key? key})
+  const CustomTabBar({this.selectedIndex, this.titles, this.onTap, Key? key})
       : super(key: key);
 
   @override
@@ -19,7 +15,7 @@ class CustomTabBar extends StatelessWidget {
       child: Stack(
         children: [
           Row(
-            children: titles
+            children: titles!
                 .map((e) => Padding(
                     padding: EdgeInsets.only(left: defaultMargin),
                     child: Column(
@@ -31,7 +27,7 @@ class CustomTabBar extends StatelessWidget {
                           margin: EdgeInsets.only(bottom: 8),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(1.5),
-                            color: (titles.indexOf(e) == selectedIndex)
+                            color: (titles!.indexOf(e) == selectedIndex)
                                 ? "020202".toColor()
                                 : Colors.transparent,
                           ),
@@ -39,12 +35,12 @@ class CustomTabBar extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             if (onTap != null) {
-                              onTap(titles.indexOf(e));
+                              onTap!(titles!.indexOf(e));
                             }
                           },
                           child: Text(
                             e,
-                            style: (titles.indexOf(e) == selectedIndex)
+                            style: (titles!.indexOf(e) == selectedIndex)
                                 ? blackFontStyle3.copyWith(
                                     fontWeight: FontWeight.w500)
                                 : greyFontStyle,

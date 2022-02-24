@@ -1,11 +1,10 @@
 part of 'widgets.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
-  final int selectedIndex;
-  final Function(int index) onTap;
+  final int? selectedIndex;
+  final Function(int index)? onTap;
 
-  const CustomBottomNavBar(
-      {required this.onTap, this.selectedIndex = 0, Key? key})
+  const CustomBottomNavBar({this.onTap, this.selectedIndex = 0, Key? key})
       : super(key: key);
 
   @override
@@ -23,7 +22,7 @@ class CustomBottomNavBar extends StatelessWidget {
           GestureDetector(
             onTap: () {
               if (onTap != null) {
-                onTap(0);
+                onTap!(0);
               }
             },
             child: Column(
@@ -54,7 +53,7 @@ class CustomBottomNavBar extends StatelessWidget {
           GestureDetector(
             onTap: () {
               if (onTap != null) {
-                onTap(1);
+                onTap!(1);
               }
             },
             child: Column(
@@ -86,7 +85,7 @@ class CustomBottomNavBar extends StatelessWidget {
           GestureDetector(
             onTap: () {
               if (onTap != null) {
-                onTap(2);
+                onTap!(2);
               }
             },
             child: Column(

@@ -1,12 +1,12 @@
 part of 'widgets.dart';
 
 class RatingStar extends StatelessWidget {
-  final double rate;
-  const RatingStar({required this.rate, Key? key}) : super(key: key);
+  final double? rate;
+  const RatingStar({this.rate, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    int numberOfStars = rate.round();
+    int numberOfStars = rate!.round();
     return Row(
       children: List<Widget>.generate(
               5,
